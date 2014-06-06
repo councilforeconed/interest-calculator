@@ -11,6 +11,11 @@ export default Ember.Component.extend({
     });
   },
 
+  updateSelection: function () {
+    this.$('input[value=%@]'.fmt(this.get('accountType')))
+      .attr('checked', true);
+  }.observes('accountType'),
+
   willDestroyElement: function () {
     this('input').off('change');
   }

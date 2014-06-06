@@ -39,6 +39,8 @@ export default Ember.Component.extend({
       unload: removedNames
     });
 
+    this.set('names', currentNames);
+
   }.observes('data'),
 
   getNames: function () {
