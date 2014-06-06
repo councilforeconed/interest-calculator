@@ -1,0 +1,56 @@
+@import 'colors';
+
+input[type="number"], input[type="text"] {
+  font-family: "Open Sans";
+  line-height: normal;
+  padding: 0.25em;
+  width: 100%;
+  border: 1px solid #EEE;
+  border-radius: 3px;
+  font-size: 1em;
+  margin: 1rem 0;
+  &:active {
+    outline: none;
+  };
+  @media screen and (max-width: 768px) {
+    width: 92%;
+  }
+}
+
+input.name {
+  text-align: center;
+}
+
+input.rate {
+  width: 3em;
+  text-align: right;
+  margin-right: 10px;
+}
+
+input.base {
+  width: 6em;
+  margin-left: 10px;
+}
+
+input.term {
+  width: 4em;
+  text-align: right;
+  margin-right: 10px;
+}
+
+select {
+  font-family: "Open Sans";
+  line-height: normal;
+  padding: 0.25em;
+  width: 100%;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  font-size: 1em;
+  margin: 1rem 0;
+  &:active {
+    outline: none;
+  };
+  @media screen and (max-width: 768px) {
+    width: 92%;
+  }
+}

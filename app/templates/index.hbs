@@ -1,0 +1,51 @@
+<div class="container">
+  {{interest-chart data=data}}
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Base Amount</th>
+      <th>Interest Rate</th>
+      <th>Duration</th>
+      {{#if isLoan}}<th>Monthly Payments</th>{{/if}}
+      <th>Final Amount</th>
+    <tr>
+  </thead>
+  <tbody>
+    {{#each account in this}}
+    <tr>
+      <td>{{account.name}}</td>
+      <td>${{input type="number" value=account.baseAmount class="base"}}</td>
+      <td>{{input type="number" value=account.interestRate class="rate"}}%</td>
+      <td>{{account.termLength}} years</td>
+      {{#if isLoan}}<td>{{format-currency account.monthlyPayments}}</td>{{/if}}
+      <td>{{format-currency account.final}}</td>
+    </tr>
+    {{/each}}
+    <tr>
+      <td>{{input type="text" value=newAccountName class="name" placeholder="New Account Name"}}</td>
+      <td>${{input type="number" value=newAccountBase class="base"}}</td>
+      <td>{{input type="number" value=newAccountRate class="rate"}}%</td>
+      <td colspan="3"><button {{action 'addAccount'}} {{bind-attr disabled=cantAddAccount}}>Add Account</button></td>
+    <tr>
+  </tbody>
+</table>
+
+<div class="container">
+  <div class="three columns">
+    <h4>Term Length</h4>
+    {{input type="number" value=termLength placeholder="10" class="term"}} Years
+  </div>
+  <div class="three columns">
+    <h4>Account Type</h4>
+    {{account-type-selector accountType=accountType}}
+  </div>
+  <div class="ten columns">
+    <h4>Data Sets</h4>
+    <button class="secondary" {{action 'loadExampleSet' 'autoLoans'}}>Load Slide 23.2</button>
+    <button class="secondary" {{action 'loadExampleSet' 'savings'}}>Load Slide 23.6</button>
+    <button class="danger" {{action 'clearAccounts'}}>Clear Accounts</button>
+  </div>
+</div>
