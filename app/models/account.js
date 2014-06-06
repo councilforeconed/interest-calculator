@@ -30,13 +30,16 @@ export default Ember.Object.extend({
     var data = [this.get('name')];
     var amount = this.get('base');
 
-    for (var month = 0; month <= this.get('months'); month++) {
+    var totalInterest = this.get('final') - this.get('base');
+    var annualInterest = totalInterest / this.get('term');
+
+    for (var year = 0; year <= this.get('term'); year++) {
       data.push(amount);
-      amount = amount + (this.get('monthlyPayments') - amount / this.get('months'));
+      amount = amount + annualInterest;
     }
 
     return data;
-  }.property('name', 'base', 'months', 'rate', 'monthlyPayments'),
+  }.property('name', 'base', 'term', 'rate', 'final'),
 
   final: function () {
     return this.get('monthlyPayments') * this.get('months');
